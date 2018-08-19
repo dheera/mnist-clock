@@ -27,7 +27,8 @@ def update_clock():
             "digits", digit, random.choice(digit_filenames[digit])
         ))
         img = np.reshape(img_pil.getdata(), img_pil.size).astype(np.uint8)
-        update_display(pos, img)
+        if update_clock.last_time_string[pos] != digit or random.random() < 0.2:
+            update_display(pos, img)
 
     update_clock.last_time_string = time_string
 update_clock.last_time_string = "----"
