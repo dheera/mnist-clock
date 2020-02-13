@@ -1,8 +1,10 @@
 # MNIST clock
 
+UNFINISHED -- STAY TUNED
+
 A clock that displays using MNIST digits.
 
-![image](/images/assembly0.jpg "image")
+![image](/images/assembly1.jpg "image")
 
 ### 3D printed parts
 
