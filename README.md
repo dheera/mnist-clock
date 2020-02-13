@@ -2,7 +2,9 @@
 
 UNFINISHED -- STAY TUNED
 
-A clock that displays using MNIST digits.
+A clock that displays using randomly selected MNIST digits.
+
+Original idea/concept was from a social media status by [Evan Pu](https://evanthebouncy.github.io/), hardware/software implementation by me ([Dheera Venkatraman](http://dheera.net/).
 
 ![image](/images/assembly1.jpg "image")
 
