@@ -18,6 +18,12 @@ It uses an TinyPICO which is an awesome, compact ESP32 board with plenty of GPIO
 
 I use 2 10-pin JST-EH connectors on the TinyPICO. JST-EH connectors are awesome, lower profile than JST-XH, more satisfying to plug in than JST-XH, and shorter and more secure than standard pin headers. I use them to connectorize almost all 0.1"/2.5mm pitch breakout boards.
 
+## Software description
+
+I usually write in C++ or C but I was curious about this new MicroPython stuff, so I tried it for this project.
+
+I use 2 bits per pixel of greyscale depth on each MNIST digit (i.e. 4 greyscale levels). At that bit depth, each 28x28 pixel MNIST digit occupies 196 bytes, so 4MB of flash should be able to fit the entire MNIST validation set. If you want to fit more digits you could (a) use a microcontroller board with a lot more flash (b) use 1-bit depth (c) use compression or some combination of the above.
+
 ### 3D printed parts
 
 * Bottom and top cover: see .stl files in design/
