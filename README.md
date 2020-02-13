@@ -4,9 +4,19 @@ UNFINISHED -- STAY TUNED
 
 A clock that displays using randomly selected MNIST digits.
 
-Original idea/concept was from a social media status by [Evan Pu](https://evanthebouncy.github.io/), hardware/software implementation by [Dheera Venkatraman](http://dheera.net/).
+Hardware/software implementation by [Dheera Venkatraman](http://dheera.net/)
+
+Original idea/concept is from a social media status by [Evan Pu](https://evanthebouncy.github.io/).
 
 ![image](/images/assembly1.jpg "image")
+
+### Brief hardware description
+
+It uses an TinyPICO which is an awesome, compact ESP32 board with plenty of GPIO pins, 4MB flash, Wi-Fi, and lots of other features not needed for this project.
+
+4 e-Ink displays are used for the digits. I chose e-Ink since it matches with the idea of handwritten digits, works well in all lighting conditions, and doesn't light up your bedroom when you're trying to sleep. The Waveshare e-Ink displays are mostly SPI, although they have some annoying extra pins. One would wish they were just SPI + one CS pin for each board, but a few more connections are necessary. Here is a diagram of the connections to the ESP32. Crimp the wires according to this.
+
+I use 2 10-pin JST-EH connectors on the TinyPICO. JST-EH connectors are awesome, lower profile than JST-XH, more satisfying to plug in than JST-XH, and shorter and more secure than standard pin headers. I use them to connectorize almost all 0.1"/2.5mm pitch breakout boards.
 
 ### 3D printed parts
 
