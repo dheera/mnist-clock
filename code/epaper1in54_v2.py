@@ -180,22 +180,6 @@ class EPD:
                 self._data(image[i + j * int(self.width / 8)])   
         self.turn_on_display()
 
-    def display_part_base_image(self, image):
-        if (image == None):
-            return
-            
-        self.send_command(0x24)
-        for j in range(0, self.height):
-            for i in range(0, int(self.width / 8)):
-                self._data(image[i + j * int(self.width / 8)])
-        
-        self.send_command(0x26)
-        for j in range(0, self.height):
-            for i in range(0, self.width / 8):
-                self._data(image[i + j * int(self.width / 8)])
-                
-        self.turn_on_display_part()
-
     def display_part(self, image):
         if (image == None):
             return
