@@ -1,10 +1,15 @@
 """
-MicroPython Waveshare 1.54" Black/White GDEH0154D27 e-paper display driver
+MicroPython Waveshare 1.54" Black/White GDEH0154D27 e-paper display driver V2
+
+Based on code from
 https://github.com/mcauser/micropython-waveshare-epaper
+AND
+https://github.com/waveshare/e-Paper
 
 MIT License
 Copyright (c) 2017 Waveshare
 Copyright (c) 2018 Mike Causer
+Copyright (c) 2020 Dheera Venkatraman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -54,8 +59,6 @@ class EPD:
         self.cs(0)
         self.spi.write(bytearray([command]))
         self.cs(1)
-        #if data is not None:
-        #    self._data(data)
 
     def _data(self, data):
         self.dc(1)
@@ -67,6 +70,7 @@ class EPD:
         print("wait_until_idle")
         while self.busy.value() == BUSY:
             sleep_ms(100)
+        sleep_ms(200)
 
     def turn_on_display(self):
         self._command(0x22) # DISPLAY_UPDATE_CONTROL_2
@@ -78,8 +82,10 @@ class EPD:
     def turn_on_display_part(self):
         self._command(0x22) # DISPLAY_UPDATE_CONTROL_2
         self._data(0xFF)
+        self._command(0x20) # MASTER_ACTIVATION
 
         self.wait_until_idle()
+
 
     def init(self):
         print("init")
