@@ -7,11 +7,13 @@ Hardware/software implementation by Dheera Venkatraman ([www](http://dheera.net/
 Original idea/concept by Evan Pu ([www](https://evanthebouncy.github.io), [twitter](https://twitter.com/evanthebouncy))
 
 ![image](/images/final.jpg "image")
+MNIST clock on the wall.
 
 ![image](/images/assembly1.jpg "image")
+ESP32 and 4 Waveshare e-Ink displays.
 
 ![image](/images/design.jpg "image")
-(Design by Evan Pu)
+Hand-drawn design by Evan Pu that was posted as a social media status in 2018.
 
 ### Original design
 
