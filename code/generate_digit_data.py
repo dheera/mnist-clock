@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+# generates the files digit_N.data.
+# this script is intended to be run on a desktop to generate the .data files only
+# and does not need to be copied to the microcontroller.
+
+# if you downloaded the .data files from the repo you don't need to run this script.
+
 import mnist
 import numpy as np
 
