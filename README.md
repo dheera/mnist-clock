@@ -4,7 +4,7 @@ A clock that displays using randomly selected MNIST digits.
 
 Hardware/software implementation by Dheera Venkatraman ([www](http://dheera.net/), [twitter](https://twitter.com/dheeranet))
 
-Original idea/concept by Evan Pu] ([www](https://evanthebouncy.github.io), [twitter](https://twitter.com/evanthebouncy))
+Original idea/concept by Evan Pu ([www](https://evanthebouncy.github.io), [twitter](https://twitter.com/evanthebouncy))
 
 ![image](/images/final.jpg "image")
 
