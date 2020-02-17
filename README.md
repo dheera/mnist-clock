@@ -6,9 +6,16 @@ A clock that displays using randomly selected MNIST digits.
 
 Hardware/software implementation by [Dheera Venkatraman](http://dheera.net/)
 
-Original idea/concept is from a social media status by [Evan Pu](https://evanthebouncy.github.io/).
+Original idea/concept is from a social media status by [Evan Pu](https://twitter.com/evanthebouncy).
+
+![image](/images/final.jpg "image")
 
 ![image](/images/assembly1.jpg "image")
+
+![image](/images/design.jpg "image")
+(Design by Evan Pu)
+
+### Original design
 
 ### Hardware
 
