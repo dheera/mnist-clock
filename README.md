@@ -1,7 +1,5 @@
 # MNIST clock
 
-UNFINISHED -- STAY TUNED
-
 A clock that displays using randomly selected MNIST digits.
 
 Hardware/software implementation by [Dheera Venkatraman](http://dheera.net/)
