@@ -17,6 +17,10 @@ CONFIG_SPI = {
     "sck": Pin(18),
 }
 
+# list your pin connections here for the 4 displays here
+# version should be (1,0) for Waveshare 1.54-inch V1 or (2,0) for Waveshare 1.54-inch V2.
+# V2.1 is not supported yet.
+
 CONFIG_DISPLAYS = [
     { "version": (2,0), "cs": Pin(26), "busy": Pin(25), "reset": Pin(4), "dc": Pin(33) },
     { "version": (2,0), "cs": Pin(15), "busy": Pin(27), "reset": Pin(4), "dc": Pin(33) },
