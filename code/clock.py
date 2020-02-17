@@ -1,15 +1,15 @@
-import epaper1in54 as epaper
+import epaper1in54_1_0
+import epaper1in54_2_0
+
+import network
+import ntptime
+
 from machine import Pin, SPI
 
 import os
 import framebuf
 import time
 import random
-
-pin_cs = Pin(5)
-pin_dc = Pin(33)
-pin_re = Pin(4)
-pin_bu = Pin(22)
 
 CONFIG_SPI = {
     "mosi": Pin(23),
@@ -18,11 +18,20 @@ CONFIG_SPI = {
 }
 
 CONFIG_DISPLAYS = [
-    { "cs": Pin(26), "busy": Pin(25), "reset": Pin(4), "dc": Pin(33) },
-    { "cs": Pin(15), "busy": Pin(27), "reset": Pin(4), "dc": Pin(33) },
-    { "cs": Pin(5), "busy": Pin(22), "reset": Pin(4), "dc": Pin(33) },
-    { "cs": Pin(21), "busy": Pin(32), "reset": Pin(4), "dc": Pin(33) },
+    { "version": (2,0), "cs": Pin(26), "busy": Pin(25), "reset": Pin(4), "dc": Pin(33) },
+    { "version": (2,0), "cs": Pin(15), "busy": Pin(27), "reset": Pin(4), "dc": Pin(33) },
+    { "version": (1,0), "cs": Pin(5), "busy": Pin(22), "reset": Pin(4), "dc": Pin(33) },
+    { "version": (1,0), "cs": Pin(21), "busy": Pin(32), "reset": Pin(4), "dc": Pin(33) },
 ]
+
+with open(".wifi", "r") as f:
+    CONFIG_WIFI_SSID = f.readline().strip()
+    CONFIG_WIFI_PASSWORD = f.readline().strip()
+
+routercon = network.WLAN(network.STA_IF)
+routercon.active(True)
+routercon.connect(CONFIG_WIFI_SSID, CONFIG_WIFI_PASSWORD)
+print(routercon.ifconfig())
 
 spi = SPI(
     baudrate = 2000000,
@@ -33,10 +42,17 @@ spi = SPI(
     mosi = CONFIG_SPI["mosi"],
 )
 
-displays = [epaper.EPD(spi, config["cs"], config["dc"], config["reset"], config["busy"]) for config in CONFIG_DISPLAYS]
+displays = []
+
+for config in CONFIG_DISPLAYS:
+    if config["version"] == (1,0):
+        displays.append(epaper1in54_1_0.EPD(spi, config["cs"], config["dc"], config["reset"], config["busy"]))
+    elif config["version"] == (2,0):
+        displays.append(epaper1in54_2_0.EPD(spi, config["cs"], config["dc"], config["reset"], config["busy"]))
 
 for display in displays:
     display.init()
+    display.clear(0xFF)
 
 w = 200
 h = 200
@@ -93,14 +109,14 @@ def write_digit(display_num, digit):
             # (28*7 = 196) which almost fills the 200px screen
             # offset by 2 pixels to center it properly
             if pixel_value == 3:
-                fb.fill_rect(2 + pixel_j * 7, 2 + pixel_i * 7, 7, 7, black)
+                fb.fill_rect(193 - (2 + pixel_j * 7), 193 - (2 + pixel_i * 7), 7, 7, black)
             elif pixel_value == 1:
-                fb.blit(pixel_grey_2, 2 + pixel_j * 7, 2 + pixel_i * 7)
+                fb.blit(pixel_grey_2, 193 - (2 + pixel_j * 7), 193 - (2 + pixel_i * 7))
             elif pixel_value == 2:
-                fb.blit(pixel_grey_1, 2 + pixel_j * 7, 2 + pixel_i * 7)
+                fb.blit(pixel_grey_1, 193 - (2 + pixel_j * 7), 193 - (2 + pixel_i * 7))
 
-    displays[display_num].set_frame_memory(buf, x, y, w, h)
-    displays[display_num].display_frame()
+    #displays[display_num].set_frame_memory(buf, x, y, w, h)
+    displays[display_num].display(buf)
 
 def read_digit_data(digit):
     """
@@ -125,7 +141,42 @@ def read_digit_data(digit):
 
 def main():
     i = 0
+    last_digit_0 = -1
+    last_digit_1 = -1
+    last_digit_2 = -1
+    last_digit_3 = -1
+
     while True:
-        time.sleep(2)
-        write_digit(i)
+        if i % 300 == 0:
+            try:
+                ntptime.settime()
+            except:
+                print("ntp error")
+        # t = ntptime.time() + 946684800 # jan 1 2000 epoch
+
+        the_time = time.localtime()
+        digit_3 = the_time[4] % 10
+        digit_2 = the_time[4] // 10
+        digit_1 = the_time[3] % 10
+        digit_0 = the_time[3] // 10
+
+        print(digit_0, digit_1, digit_2, digit_3)
+
+        if digit_0 != last_digit_0:
+            write_digit(0, digit_0)
+        if digit_1 != last_digit_1:
+            write_digit(1, digit_1)
+        if digit_2 != last_digit_2:
+            write_digit(2, digit_2)
+        if digit_3 != last_digit_3:
+            write_digit(3, digit_3)
+
+        last_digit_0 = digit_0
+        last_digit_1 = digit_1
+        last_digit_2 = digit_2
+        last_digit_3 = digit_3
+
         i += 1
+
+        time.sleep(1)
+        

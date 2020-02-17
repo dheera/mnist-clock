@@ -1,0 +1,3 @@
+import clock
+
+clock.main()
