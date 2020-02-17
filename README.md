@@ -39,7 +39,7 @@ I use 2 bits per pixel of greyscale depth on each MNIST digit (i.e. 4 greyscale 
 
 #### COTS parts
 
-* 4 x [Waveshare 1.54 inch e-Ink display](https://www.amazon.com/Waveshare-Module-Resolution-Electronic-Interface/dp/B0728BJTZ/) -- CAUTION: There is a V1 and V2 version of the board that use different communication protocols. Some sellers have mixed-up stockpiles of both versions. You may do best to order 8 or more, pick out 4 identical ones and return the rest. The current state of this repo supports V1 board only.
+* 4 x [Waveshare 1.54 inch e-Ink display](https://www.amazon.com/Waveshare-Module-Resolution-Electronic-Interface/dp/B0728BJTZ/) -- CAUTION: There are V1, V2, and V2.1 versions of the board that use different communication protocols. Some sellers have mixed-up stockpiles of both versions. You may do best to order 8 or more, pick out 4 identical ones and return the rest. The current state of this repo supports V1 and V2 only. If you get a board that says "Rev 2.1" on it, it will not work.
 
 * 1 x [TinyPICO](https://www.adafruit.com/product/4335)
 
