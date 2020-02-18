@@ -41,7 +41,7 @@ Put all the files in /code in the root directory of your TinyPICO. Also create a
 
 #### COTS parts
 
-* 4 x [Waveshare 1.54 inch e-Ink display](https://www.amazon.com/Waveshare-Module-Resolution-Electronic-Interface/dp/B0728BJTZ/) -- CAUTION: There are V1, V2, and V2.1 versions of the board that use different communication protocols. Some sellers have mixed-up stockpiles of both versions. You may do best to order 8 or more, pick out 4 identical ones and return the rest. The current state of this repo supports V1 and V2 only. If you get a board that says "Rev 2.1" on it, it will not work.
+* 4 x [Waveshare 1.54 inch e-Ink display](https://www.amazon.com/Waveshare-Module-Resolution-Electronic-Interface/dp/B0728BJTZC/) -- CAUTION: There are V1, V2, and V2.1 versions of the board that use different communication protocols. Some sellers have mixed-up stockpiles of both versions. You may do best to order 8 or more, pick out 4 identical ones and return the rest. The current state of this repo supports V1 and V2 only. If you get a board that says "Rev 2.1" on it, it will not work.
 
 * 1 x [TinyPICO](https://www.adafruit.com/product/4335)
 
@@ -50,6 +50,10 @@ Put all the files in /code in the root directory of your TinyPICO. Also create a
 * 2 x [JST-EH 10-pin housing](https://www.digikey.com/products/en/connectors-interconnects/rectangular-connectors-housings/319?k=EHR-&k=&pkeyword=EHR-&sv=0&pv88=63986&sf=0&FV=-8%7C319&quantity=&ColumnSort=0&page=1&pageSize=25)
 
 * 20 x [JST-EH crimps](https://www.digikey.com/product-detail/en/jst-sales-america-inc/SEH-001T-P0.6/455-1042-1-ND/527266)
+
+* 1 x [Anker 6ft white USB-A to USB-Micro-B cable](https://www.amazon.com/Anker-Powerline-Micro-USB-Smartphones/dp/B012VZT5IO/)
+
+* E6000 or similar adhesive to attach the TinyPICO to the case
 
 #### Tools
 
