@@ -40,10 +40,10 @@ I usually write in C++ or C but I was curious about this new MicroPython stuff, 
 I use 2 bits per pixel of greyscale depth on each MNIST digit (i.e. 4 greyscale levels). At that bit depth, each 28x28 pixel MNIST digit occupies 196 bytes, so 4MB of flash should be able to fit the entire MNIST validation set. If you want to fit more digits you could (a) use a microcontroller board with a lot more flash (b) use 1-bit depth (c) use compression or some combination of the above.
 
 Put all the files in /code in the root directory of your TinyPICO. Also create a file called **.wifi** with you Wi-Fi credentials:
-````
+```
 yourssid
 yourpassword
-````
+```
 
 ### Parts
 
