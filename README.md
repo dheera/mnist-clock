@@ -23,6 +23,8 @@ It uses an TinyPICO which is an awesome, compact ESP32 board with plenty of GPIO
 
 4 e-Ink displays are used for the digits. I chose e-Ink since it matches with the idea of handwritten digits, works well in all lighting conditions, and doesn't light up your bedroom when you're trying to sleep. The Waveshare e-Ink displays are mostly SPI, although they have some annoying extra pins. One would wish they were just SPI + one CS pin for each board, but a few more connections are necessary. Here is a diagram of the connections to the ESP32. Crimp the wires according to this.
 
+![image](/images/schematic.jpg "schematic")
+
 I use 2 10-pin JST-EH connectors on the TinyPICO. JST-EH connectors are awesome, lower profile than JST-XH, more satisfying to plug in than JST-XH, and shorter and more secure than standard pin headers. I use them to connectorize almost all 0.1"/2.5mm pitch breakout boards.
 
 ### Software
