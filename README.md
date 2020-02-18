@@ -30,6 +30,9 @@ I use 2 10-pin JST-EH connectors on the TinyPICO. JST-EH connectors are awesome,
 ![image](/images/assembly0.jpg "assembly")
 Connectorized TinyPICO with JST-EH connectors.
 
+![image](/images/assembly2.jpg "assembly")
+Displays assembled before adding the top cover.
+
 ### Software
 
 I usually write in C++ or C but I was curious about this new MicroPython stuff, so I tried it for this project.
