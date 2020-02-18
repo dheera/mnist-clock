@@ -28,6 +28,11 @@ CONFIG_DISPLAYS = [
     { "version": (1,0), "cs": Pin(21), "busy": Pin(32), "reset": Pin(4), "dc": Pin(33) },
 ]
 
+
+##################################
+
+# initialize Wi-Fi
+
 with open(".wifi", "r") as f:
     CONFIG_WIFI_SSID = f.readline().strip()
     CONFIG_WIFI_PASSWORD = f.readline().strip()
@@ -37,6 +42,8 @@ routercon.active(True)
 routercon.connect(CONFIG_WIFI_SSID, CONFIG_WIFI_PASSWORD)
 print(routercon.ifconfig())
 
+# initialize SPI
+
 spi = SPI(
     baudrate = 2000000,
     polarity = 0,
@@ -45,6 +52,8 @@ spi = SPI(
     miso = CONFIG_SPI["miso"],
     mosi = CONFIG_SPI["mosi"],
 )
+
+# initialize displays
 
 displays = []
 
@@ -60,15 +69,17 @@ for display in displays:
 
 w = 200
 h = 200
-x = 0
-y = 0
 white = 1
 black = 0
 
+# 200x200 framebuffer used to draw digits on Waveshare 1.54-inch display
 buf = bytearray(w * h // 8)
 fb = framebuf.FrameBuffer(buf, w, h, framebuf.MONO_HLSB)
 fb.fill(white)
 
+# (constant) 7x7 framebuffer filled with dithered 66% gray used for gray value 1
+# Q: why 7x7?
+# A: MNIST is 28x28 and 28*7 x 28*7 = 196x196 which just almost fills the 200x200
 pixel_grey_1_buf = bytearray(7 * 7 // 8 + 1)
 pixel_grey_1 = framebuf.FrameBuffer(pixel_grey_1_buf, 7, 7, framebuf.MONO_HLSB)
 pixel_grey_1.fill(white)
@@ -77,6 +88,7 @@ for i in range(7):
         if random.randint(0, 3) >= 1:
             pixel_grey_1.pixel(i, j, black)
 
+# (constant) 7x7 framebuffer filled with dithered 33% gray used for gray value 2
 pixel_grey_2_buf = bytearray(7 * 7 // 8 + 1)
 pixel_grey_2 = framebuf.FrameBuffer(pixel_grey_2_buf, 7, 7, framebuf.MONO_HLSB)
 pixel_grey_2.fill(white)
@@ -112,12 +124,13 @@ def display_digit(display_num, digit):
             # upscale the entire image by factor of 7
             # (28*7 = 196) which almost fills the 200px screen
             # offset by 2 pixels to center it properly
-            if pixel_value == 3:
+            if pixel_value == 3: # gray value 3
                 fb.fill_rect(193 - (2 + pixel_j * 7), 193 - (2 + pixel_i * 7), 7, 7, black)
-            elif pixel_value == 1:
-                fb.blit(pixel_grey_2, 193 - (2 + pixel_j * 7), 193 - (2 + pixel_i * 7))
-            elif pixel_value == 2:
+            elif pixel_value == 2: # gray value 2
                 fb.blit(pixel_grey_1, 193 - (2 + pixel_j * 7), 193 - (2 + pixel_i * 7))
+            elif pixel_value == 1: # gray value 1
+                fb.blit(pixel_grey_2, 193 - (2 + pixel_j * 7), 193 - (2 + pixel_i * 7))
+            # do nothing for gray value 0; it is already white
 
     #displays[display_num].set_frame_memory(buf, x, y, w, h)
     displays[display_num].display(buf)
