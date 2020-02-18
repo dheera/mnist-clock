@@ -31,7 +31,7 @@ I use 2 10-pin JST-EH connectors on the TinyPICO. JST-EH connectors are awesome,
 Connectorized TinyPICO with JST-EH connectors.
 
 ![image](/images/assembly2.jpg "assembly")
-Displays assembled before adding the top cover.
+Displays fixed onto 3D printed housing using self-tapping M2.5 screws.
 
 ### Software
 
