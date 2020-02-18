@@ -41,7 +41,7 @@ I use 2 bits per pixel of greyscale depth on each MNIST digit (i.e. 4 greyscale 
 
 Put all the files in /code in the root directory of your TinyPICO. Also create a file called .wifi with your SSID in the first line and password in the second line.
 
-### Assembly
+### Parts
 
 #### 3D printed parts
 
@@ -62,6 +62,8 @@ Put all the files in /code in the root directory of your TinyPICO. Also create a
 * 1 x [Anker 6ft white USB-A to USB-Micro-B cable](https://www.amazon.com/Anker-Powerline-Micro-USB-Smartphones/dp/B012VZT5IO/)
 
 * E6000 or similar adhesive to attach the TinyPICO to the case
+
+* [Self tapping M2.5x6 screws](https://www.amazon.com/gp/product/B01L7PDGXO/)
 
 #### Tools
 
