@@ -85,7 +85,7 @@ for i in range(7):
         if random.randint(0, 3) >= 2:
             pixel_grey_2.pixel(i, j, black)
 
-def write_digit(display_num, digit):
+def display_digit(display_num, digit):
     """
     @display: int display index
     @digit: int from 0 to 9 inclusive
@@ -167,13 +167,13 @@ def main():
         print(digit_0, digit_1, digit_2, digit_3)
 
         if digit_0 != last_digit_0:
-            write_digit(0, digit_0)
+            display_digit(0, digit_0)
         if digit_1 != last_digit_1:
-            write_digit(1, digit_1)
+            display_digit(1, digit_1)
         if digit_2 != last_digit_2:
-            write_digit(2, digit_2)
+            display_digit(2, digit_2)
         if digit_3 != last_digit_3:
-            write_digit(3, digit_3)
+            display_digit(3, digit_3)
 
         last_digit_0 = digit_0
         last_digit_1 = digit_1
