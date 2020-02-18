@@ -27,6 +27,9 @@ It uses an TinyPICO which is an awesome, compact ESP32 board with plenty of GPIO
 
 I use 2 10-pin JST-EH connectors on the TinyPICO. JST-EH connectors are awesome, lower profile than JST-XH, more satisfying to plug in than JST-XH, and shorter and more secure than standard pin headers. I use them to connectorize almost all 0.1"/2.5mm pitch breakout boards.
 
+![image](/images/assembly0.jpg "assembly")
+Connectorized TinyPICO with JST-EH connectors.
+
 ### Software
 
 I usually write in C++ or C but I was curious about this new MicroPython stuff, so I tried it for this project.
